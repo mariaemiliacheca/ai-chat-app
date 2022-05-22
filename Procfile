@@ -1,1 +1,1 @@
-web: yarn build && yarn serve
+web: node serve.js
