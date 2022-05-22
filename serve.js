@@ -2,7 +2,7 @@ const express = require('express');
 const { createProxyMiddleware } = require('http-proxy-middleware');
 const path = require('path');
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 const API_KEY = process.env.API_KEY;
 app.use(express.static(path.join(__dirname, 'build')));
 
@@ -21,5 +21,6 @@ app.use(
     })
 )
 
-console.log("serve!")
-app.listen(PORT);
+app.listen(PORT, () => {
+    console.log(`Running server on port: ${PORT}`)
+});
