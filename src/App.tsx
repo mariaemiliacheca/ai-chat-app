@@ -3,11 +3,15 @@ import './App.scss';
 import { sendMessage } from './api';
 import { Prompt } from './components';
 import Chat, { ChatData, ChatType } from './components/Chat/Chat';
+import { Button, Menu, MenuItem, Navbar, NavbarDivider, NavbarGroup, NavbarHeading, Popover, Position } from '@blueprintjs/core';
+import { Popover2 } from '@blueprintjs/popover2';
 
 type Props = {
+
 }
 type State = {
-  conversation: ChatData[]
+  conversation: ChatData[];
+  isDarkModeOn: boolean;
 }
 
 class App extends React.Component<Props, State> {
@@ -15,7 +19,8 @@ class App extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      conversation: []
+      conversation: [],
+      isDarkModeOn: false
     };
   }
 
@@ -37,7 +42,20 @@ class App extends React.Component<Props, State> {
 
   render() {
     return (
-      <div className="App">
+      <div className={"App" + (this.state.isDarkModeOn ? ' bp4-dark' : '')} >
+        <Navbar fixedToTop>
+          <NavbarGroup><NavbarHeading>Maria Emilia's Chat App</NavbarHeading></NavbarGroup>
+          <NavbarGroup align='right'>
+          <NavbarDivider />
+          <Popover2 minimal content={<Menu>
+            <MenuItem text="Clear chat" onClick={() => this.setState({conversation: []})}/>
+            <MenuItem text="Toggle Dark Mode" onClick={() => this.setState({isDarkModeOn: !this.state.isDarkModeOn})}/>
+          </Menu>} position={Position.BOTTOM_RIGHT}>
+              <Button rightIcon="caret-down" text="Options" minimal/>
+          </Popover2>
+          </NavbarGroup>
+
+        </Navbar>
         <Chat chatItems={this.state.conversation}/>
         <Prompt onSubmit={this.onSubmitHandler}/>
       </div>

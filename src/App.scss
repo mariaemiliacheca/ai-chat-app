@@ -3,9 +3,10 @@
   flex-direction: column;
   justify-content: space-between;
   height: 100vh;
+
+
+  &.bp4-dark {
+    background-color: #2f343c;
+  }
 }
-
-
-
-
 

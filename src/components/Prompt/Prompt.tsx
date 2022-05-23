@@ -1,4 +1,4 @@
-import { Button, InputGroup } from '@blueprintjs/core';
+import { Button, InputGroup, Navbar } from '@blueprintjs/core';
 import React, { ChangeEvent, KeyboardEvent } from 'react';
 import './Prompt.scss';
 
@@ -32,9 +32,9 @@ class Prompt extends React.Component<Props, State> {
     }
 
     render(): React.ReactNode {
-        // return <input type="text" placeholder='Typ your text here~å'/>
         return (
             <InputGroup
+                className='Prompt'
                 onChange={
                 this.onChangeHandler
                 }
@@ -43,6 +43,7 @@ class Prompt extends React.Component<Props, State> {
                 placeholder="Type something to the AI..."
                 rightElement={<Button icon="arrow-right" minimal onClick={this.onSubmitHandler}/>}
             />
+           
         )
     }
 }

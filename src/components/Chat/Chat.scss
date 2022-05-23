@@ -1,4 +1,7 @@
 .Chat {
     display: flex;
     flex-direction: column;
+    flex-flow: column;
+    margin-top: 4rem;
+    padding: 0 0.5rem;
 }
