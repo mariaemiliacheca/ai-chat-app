@@ -27,7 +27,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "serve": "node serve.js"
+    "serve": "node serve.js",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -49,6 +50,11 @@
   },
   "devDependencies": {
     "http-proxy-middleware": "^2.0.6",
+    "husky": ">=6",
+    "lint-staged": ">=10",
     "prettier": "2.6.2"
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx,jsx,scss,css,md}": "prettier --write"
   }
 }
